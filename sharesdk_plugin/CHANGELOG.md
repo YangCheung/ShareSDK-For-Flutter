@@ -81,3 +81,9 @@
 ## 1.3.2
 * android fix bug
 * android add douyin
+
+## 1.3.3
+* upgrade Android embedding from v1 to v2
+* 
+## 1.3.4
+* Code formatting optimization
