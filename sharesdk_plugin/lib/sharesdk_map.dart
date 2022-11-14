@@ -97,17 +97,34 @@ const String KVIDEO_ARRAY = "videoArray";
 class SSDKMap {
 	final Map map = Map();
 
-	void setGeneral(String title, String text, dynamic images, String imageUrlAndroid, String imagePathAndroid, String url, String titleUrlAndroid, String musicUrlAndroid, String videoUrlAndroid, String filePath, SSDKContentType contentType) {
+	void setGeneral({
+		String? title,
+		String? text,
+		dynamic images,
+		String? imageUrlAndroid,
+		String? imagePathAndroid,
+		dynamic imageData,
+		String? url,
+		String? titleUrlAndroid,
+		String? musicUrlAndroid,
+		String? videoUrlAndroid,
+		String? filePath,
+		required SSDKContentType contentType,
+	}) {
 		map[kType] = contentType.value;
 		map[kText] = text;
 		map[kTitle] = title;
 		map[kImages] = images;
-		map[kUrl] = url;map[kTitleUrlAndroid] = titleUrlAndroid;
+		map[kUrl] = url;
+		map[kTitleUrlAndroid] = titleUrlAndroid;
 		map[kMusicUrlAndroid] = musicUrlAndroid;
 		map[kVideoUrlAndroid] = videoUrlAndroid;
 		map[kImageUrlAndroid] = imageUrlAndroid;
 		map[kImagePathAndroid] = imagePathAndroid;
+		map[kImageDataAndroid] = imageData;
 		map[kFilePath] = filePath;
+
+		map.removeWhere((_, value) => value == null);
 	}
 
 	void setImageAndVideoAssets(String imageAssets, Map videoAsset) {
@@ -115,7 +132,24 @@ class SSDKMap {
 		map["videoAsset"] = videoAsset;
 	}
 
-	void setWechat(String text, String title, String url, String thumbImage, dynamic images, String musicFileURL, String extInfo, String imageUrl, dynamic imageData, String fileData, String emoticonData, String fileExtension, String sourceFileData, SSDKContentType contentType, ShareSDKPlatform subPlatform) {
+	void setWechat({
+		String? text,
+		String? title,
+		String? url,
+		String? thumbImage,
+		dynamic images,
+		String? imagePathAndroid,
+		String? musicFileURL,
+		String? extInfo,
+		String? imageUrl,
+		dynamic imageData,
+		String? fileData,
+		String? emoticonData,
+		String? fileExtension,
+		String? sourceFileData,
+		required SSDKContentType contentType,
+		required ShareSDKPlatform subPlatform,
+	}) {
 		Map params = {};
 		params[kType] = contentType.value;
 		params[kText] = text;
@@ -131,6 +165,9 @@ class SSDKMap {
 		params[kEmoticon] = emoticonData;
 		params[kImageUrlAndroid] = imageUrl;
 		params[kImageDataAndroid] = imageData;
+		params[kImagePathAndroid] = imagePathAndroid;
+		params.removeWhere((_, value) => value == null);
+
 		int? id = subPlatform.id;
 		map["@platform($id)"] = params;
 	}
