@@ -2,7 +2,7 @@
 #import <ShareSDK/ShareSDKHeader.h>
 #import <ShareSDKUI/ShareSDKUI.h>
 #import <ShareSDKExtension/ShareSDK+Extension.h>
-#import <MOBFoundation/MOBFoundation.h>import 'package:flutter/services.dart';
+#import <MOBFoundation/MOBFoundation.h>
 #import <objc/message.h>
 #import <MOBFoundation/MobSDK+Privacy.h>
 
